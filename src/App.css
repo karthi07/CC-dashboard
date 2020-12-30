@@ -1,38 +1,37 @@
-.App {
-  text-align: center;
+body {
+  
+  /* Background / Darker */
+  background: #1e2122;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* VPF /cards rollup */
+.VPF {
+  position: relative;
+  min-width: 1280px;
+  min-height: 720px;
+  margin: 0 auto;
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.left-bar {
+  /* left-sidebar-base */
+
+  position: absolute;
+  min-width: 260px;
+  min-height: 656px;
+  left: 0px;
+  top: 64px;
+
+  /* Background / Black */
+  background: #181b1c;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+.header {
+  /* Header / Training mode */
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  position: absolute;
+  width: 1280px;
+  height: 64px;
+  left: 0px;
+  top: 0px;
 }
