@@ -1,5 +1,4 @@
 body {
-  
   /* Background / Darker */
   background: #1e2122;
 }
@@ -10,7 +9,6 @@ body {
   min-width: 1280px;
   min-height: 720px;
   margin: 0 auto;
-
 }
 
 .left-bar {

@@ -1,10 +1,11 @@
 import React from 'react';
-import './App.css';
+import './App.sass';
+import Header from './components/Header';
 
 function App() {
   return (
     <div className="VPF">
-      <div className="header"> header</div>
+      <Header />
       <div className="left-bar">left bar</div>
     </div>
   );
