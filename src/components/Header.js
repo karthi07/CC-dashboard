@@ -1,5 +1,5 @@
 import React from 'react';
-import '../App.sass';
+import './Header.sass';
 import { Button } from 'react-bootstrap';
 
 function Header() {
