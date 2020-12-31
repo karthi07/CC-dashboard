@@ -1,16 +1,18 @@
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap.scss'
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap')
+
 body
-  /* Background / Darker */
-  background: #1e2122
+  /* Background / Darker */ 
+  background: #1e2122 !important
 
   font-family: Roboto
-  font-size: 12px
-  font-style: normal
-  font-weight: 500
-  line-height: 16px
-  letter-spacing: 0em
+  font-size: 12px !important
+  font-style: normal !important
+  font-weight: 600 !important
+  line-height: 16px !important
+  letter-spacing: 0em !important
   color: #FFF
 
 /* VPF /cards rollup */
@@ -33,23 +35,30 @@ body
   background: #181b1c
 
 .bg
-  background: #1E2122
+  background: #181b1c !important
 
 .header
   /* Header / Training mode */
   display: flex
+  height: 64px
+  width: 100%
   align-items: center
+  border-bottom: 2px solid #9AC802
+  .btn
+    min-width: 120px
+    font-size: 12px
+    padding: 0.25rem 0.75rem
+  .btn-dark
+    background: #1e2122 !important
 
   .toggle
-    //styleName: Body / Caption;
-    font-family: Roboto
-    font-size: 12px
-    font-style: normal
-    font-weight: 500
-    line-height: 16px
-    letter-spacing: 0em
-    text-align: center
-
+    img
+      margin: auto 1.5rem
+  .filters
     .btn
-      padding-top: 0
-      padding-bottom: 0
+      min-width: 80px
+      margin: 0.25rem
+
+  .menu-right
+    img
+      padding: 0.5rem
