@@ -5,7 +5,7 @@ import './Cards.sass';
 
 function Card(props) {
   let ext = props.id == 4 ? 'png' : 'svg';
-  let inactive = props.eth == '$ 00.00' ? 'inactive' : '';
+  let inactive = ['$ 00.00', '0 %'].includes(props.val) ? 'inactive' : '';
   return (
     <div className={'vpf-card ' + inactive}>
       <div className="eth d-flex justify-content-between">
@@ -27,7 +27,7 @@ function Card(props) {
           <img src={`images/graphs/prediction${props.id}.svg`} className="graph-img" />
         </div>
         <div className="stock-amt">
-          {props.eth}
+          {props.val}
           <div className="type">Total commitment funds</div>
         </div>
       </div>
@@ -35,7 +35,7 @@ function Card(props) {
   );
 }
 Card.propTypes = {
-  eth: PropTypes.string.isRequired,
+  val: PropTypes.string.isRequired,
   status: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
 };

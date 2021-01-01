@@ -1,45 +1,77 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Cards.sass';
 import Card from './Card';
-import { Button, Dropdown } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+
+import data from './CardsData';
 
 function Cards() {
+  //let cardsData = data;
+  const [cardsData, setCardsData] = useState(data);
+
+  // cardsData.sort(function (a, b) {
+  //   return a.value - b.value;
+  // });
+  const [isPercentage, setValueType] = useState(false);
+  const handleValueChange = (e) => {
+    let value = isPercentage;
+    setValueType(!value);
+  };
+
+  const handleSort = (e) => {
+    console.log(e.target.value);
+    let temp = Object.assign([], cardsData);
+    temp.sort(function (a, b) {
+      return a[e.target.value] - b[e.target.value];
+    });
+
+    setCardsData(temp);
+  };
+
   return (
     <div className="cards col-10">
       <div className="filter d-flex justify-content-between">
         <div>
           <div className="applied">Select assets, types and period:</div>
-          <Button className="filter-btn">Filter </Button>
+          <Button variant="secondary" className="filter-btn">
+            Filter{' '}
+          </Button>
         </div>
         <div className="units">
           <div>Units:</div>
-          <Button className="units-btn">% </Button>
-          <Button className="units-btn btn-active">$ </Button>
+          <Button
+            variant="secondary"
+            className={isPercentage ? 'units-btn btn-active' : 'units-btn '}
+            onClick={handleValueChange}
+            disabled={isPercentage}
+          >
+            %{' '}
+          </Button>
+          <Button
+            variant="secondary"
+            className={!isPercentage ? 'units-btn btn-active' : 'units-btn '}
+            onClick={handleValueChange}
+            disabled={!isPercentage}
+          >
+            ${' '}
+          </Button>
           <div>
             Sort by
-            <Dropdown className="sort-dropdown">
-              <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                Trending
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">action</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Something</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+            <select className="sort-select" onChange={handleSort}>
+              <option value="trend">Trending</option>
+              <option value="value">Value</option>
+            </select>
           </div>
         </div>
       </div>
-
-      <Card key={1} id={1} eth={'$ 34,346.00'} status={'Outcome in 6h 41m'} />
-      <Card key={2} id={2} eth={'$ 329,146.00'} status={'Outcome in 6h 41m'} />
-      <Card key={3} id={3} eth={'$ 129,146.00'} status={'Outcome in 6h 41m'} />
-      <Card key={4} id={4} eth={'$ 46.00'} status={'Outcome in 6h 41m'} />
-      <Card key={5} id={5} eth={'$ 00.00'} status={'opening in 32m 45s'} />
-      <Card key={2} id={2} eth={'$ 329,146.00'} status={'Outcome in 6h 41m'} />
-      <Card key={3} id={3} eth={'$ 129,146.00'} status={'Outcome in 6h 41m'} />
-      <Card key={4} id={4} eth={'$ 46.00'} status={'Outcome in 6h 41m'} />
+      {cardsData.map((data, index) => (
+        <Card
+          key={index}
+          id={data.id}
+          val={isPercentage ? data.pertcentage : data.eth}
+          status={data.status}
+        />
+      ))}
     </div>
   );
 }
